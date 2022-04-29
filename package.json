@@ -21,7 +21,7 @@
   "scripts": {
     "format:check": "prettier --list-different \"**/*.{js,ts}\"",
     "format": "prettier --write \"**/*.{js,ts}\"",
-    "build": "tsc && tsc -p ./tsconfig.declaration.json",
+    "build": "tsc && tsc -p ./tsconfig.declaration.json && denoify",
     "build:esm": "tsc --module es2015 --outDir lib/esm --moduleResolution node && cp package.esm-template.json lib/esm/package.json",
     "build:prod": "yarn build && yarn build:esm && node postbuild/main.cjs",
     "build:prod-ci": "cross-env EXPECT_GITHUB_SHA=true yarn build:prod",
@@ -59,7 +59,8 @@
     "ts-jest": "^26.1.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.0.2",
-    "yargs": "^17.0.1"
+    "yargs": "^17.0.1",
+    "denoify": "^0.11.0"
   },
   "keywords": [
     "pure random",
